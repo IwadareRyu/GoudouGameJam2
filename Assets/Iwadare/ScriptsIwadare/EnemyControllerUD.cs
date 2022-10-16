@@ -40,7 +40,7 @@ public class EnemyControllerUD : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x, -1 * transform.localScale.y, transform.localScale.z);
         _changeTime = false;
     }
-
+    /// <summary>騎士がポイント間を移動する関数。</summary>
     void Patrol()
     {
         float distance = Vector2.Distance(transform.position, _targets[_targetIndex].position);
@@ -56,7 +56,7 @@ public class EnemyControllerUD : MonoBehaviour
             _targetIndex = _targetIndex % _targets.Length;
         }
     }
-
+    /// <summary>進む方向によってキャラのScaleを変える変数</summary>
     void Flip(float y)
     {
         if (y < -1)
@@ -68,6 +68,8 @@ public class EnemyControllerUD : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
         }
     }
+
+    /// <summary>プレイヤーに当たったらプレイヤーを_warpMazzleまでワープさせる</summary>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")

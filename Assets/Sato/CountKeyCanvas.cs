@@ -5,10 +5,15 @@ using UnityEngine.UI;
 
 public class CountKeyCanvas : MonoBehaviour
 {
+    [Tooltip("取得した鍵のカウント")]
     [SerializeField] RectTransform _countKey;
+    [Tooltip("鍵のイラスト")]
     [SerializeField] Sprite _keysprite;
-    [SerializeField]PlaySceneManager playscene;
+    [Tooltip("ゲーム内のシーンマネージャー")]
+    [SerializeField] PlaySceneManager playscene;
+    [Tooltip("鍵のカウント＆ドアへ向かえを表示するテキスト")]
     [SerializeField] Text _keytext;
+    [Tooltip("表示する鍵のイラスト")]
     [SerializeField] Vector2 _keyScale = new Vector2(50f,50f);
     // Start is called before the first frame update
     void Start()
@@ -21,7 +26,7 @@ public class CountKeyCanvas : MonoBehaviour
     {
         
     }
-
+    /// <summary>鍵を取った時に呼び出す関数</summary>
     public void KeyCount()
     {
         Count();
@@ -31,6 +36,7 @@ public class CountKeyCanvas : MonoBehaviour
         }
     }
 
+    /// <summary>取った鍵をカウントしてテキストやイラストを表示する関数。</summary>
     void Count()
     {
         _keytext.text = ($"あと{ 5 - playscene._countCey}つ！");
